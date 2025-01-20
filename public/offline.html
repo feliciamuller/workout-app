@@ -15,18 +15,8 @@
   </head>
   <body>
     <div id="root"></div>
-    <script>
-      // kollar om service worker funkar
-      if('serviceWorker' in navigator){
-        window.addEventListener('load', () => {
-          //register returnerar ett promise
-          navigator.serviceWorker.register('/serviceworker.js')
-          .then((reg) => console.log('success', reg.scope)) // tillåter oss att skapa egen service worker fil
-          .catch((error) => console.error('error', error));
-        })
-
-      }
-      </script>
-
+    <div>
+        <h2>Du är offline, gå online om du vill använda appen</h2>
+    </div>
   </body>
 </html>
