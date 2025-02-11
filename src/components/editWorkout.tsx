@@ -6,7 +6,8 @@ import { svSE } from '@mui/x-date-pickers/locales';
 import { Workout } from '../models/Workout';
 import { useEffect, useState } from 'react';
 import { collection, deleteDoc, updateDoc, doc, Timestamp } from 'firebase/firestore';
-import { db } from '../config/firebase';
+import { auth, db } from '../config/firebase';
+import { Colors } from '../shared/colors';
 
 type EditWorkoutProps = {
   editModalOpen: boolean;
@@ -29,14 +30,16 @@ export const EditWorkout = (props: EditWorkoutProps) => {
   // denna körs när man klickar in sig på en ny workout = ny selected
   useEffect(() => {
     setValueDate(selected.date);
-    console.log(selected.date);
     setValueDuration(selected.durationMinutes);
     setValueWorkoutType(selected.workoutType);
   }, [selected]);
 
-  const handleDeleteClick = async (selected: Workout) => {
+  const handleDeleteClick = async (selected: Workout, userId: string | undefined) => {
+    if (!userId) {
+      return;
+    }
     try {
-      const workoutDoc = doc(db, 'workout', selected.id);
+      const workoutDoc = doc(db, 'users', userId, 'workouts', selected.id);
       await deleteDoc(workoutDoc);
     } catch (error) {
       console.error(error);
@@ -44,9 +47,12 @@ export const EditWorkout = (props: EditWorkoutProps) => {
     setEditModalClosed();
   };
 
-  const handleEditClick = async (selected: Workout) => {
+  const handleEditClick = async (selected: Workout, userId: string | undefined) => {
+    if (!userId) {
+      return;
+    }
     try {
-      const workoutDoc = doc(db, 'workout', selected.id);
+      const workoutDoc = doc(db, 'users', userId, 'workouts', selected.id);
       await updateDoc(workoutDoc, {
         workoutType: valueWorkoutType,
         durationMinutes: valueDuration,
@@ -107,10 +113,14 @@ export const EditWorkout = (props: EditWorkoutProps) => {
             // value={valueDate}
           />
         </LocalizationProvider>
-        <Button onClick={() => handleEditClick(selected)} sx={{ display: 'flex', justifySelf: 'center', padding: 1 }} type='submit'>
+        <Button
+          onClick={() => handleEditClick(selected, auth.currentUser?.uid)}
+          sx={{ display: 'flex', justifySelf: 'center', padding: 1, color: Colors.DARKPINK }}
+          type='submit'
+        >
           Spara
         </Button>
-        <Button type='submit' onClick={() => handleDeleteClick(selected)}>
+        <Button type='submit' sx={{ color: Colors.DARKPINK }} onClick={() => handleDeleteClick(selected, auth.currentUser?.uid)}>
           Radera aktivitet
         </Button>
       </Box>
