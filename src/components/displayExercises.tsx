@@ -20,6 +20,7 @@ import Grid from '@mui/material/Grid2';
 import { EditWorkout } from './editWorkout';
 import { Colors } from '../shared/colors';
 import { BarChart } from '@mui/x-charts';
+import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 
 export const DisplayExercises = () => {
   const [workoutList, setWorkoutList] = useState<Workout[]>([]);
@@ -124,7 +125,6 @@ export const DisplayExercises = () => {
   ];
 
   // funktion för att filtrera ut det man väljer i dropdown menyn
-  // behöver skapa en ny lista med uppdaterade innehållet och rendera ut det i tabellen
   const handleSelect = (selected: string) => {
     console.log('selected', selected);
     if (selected) {
@@ -166,7 +166,7 @@ export const DisplayExercises = () => {
                   <TableCell>
                     Träning
                     <Select
-                      sx={{ width: '30px', height: '20px', fontSize: '12px', ml: '5px' }}
+                      sx={{ width: '80px', height: '20px', fontSize: '12px', ml: '5px' }}
                       onChange={(event: SelectChangeEvent) => handleSelect(event.target.value)}
                       value={filteredWorkout}
                     >
@@ -194,7 +194,7 @@ export const DisplayExercises = () => {
                         <TableCell align='left'>{item.date?.toDate().toLocaleDateString()}</TableCell>
                         <TableCell>
                           <Button onClick={() => handleEditClick(item)} sx={{ color: Colors.GREEN }}>
-                            EDITERA
+                            <TuneOutlinedIcon />
                           </Button>
                         </TableCell>
                         {selectedWorkout === item && <EditWorkout editModalOpen={editModalOpen} setEditModalClosed={handleClose} selected={item} />}
@@ -207,7 +207,7 @@ export const DisplayExercises = () => {
                         <TableCell align='left'>{item.date?.toDate().toLocaleDateString()}</TableCell>
                         <TableCell>
                           <Button onClick={() => handleEditClick(item)} sx={{ color: Colors.GREEN }}>
-                            EDITERA
+                            <TuneOutlinedIcon />
                           </Button>
                         </TableCell>
                         {selectedWorkout === item && <EditWorkout editModalOpen={editModalOpen} setEditModalClosed={handleClose} selected={item} />}

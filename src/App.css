@@ -1,26 +1,27 @@
-.App{
-    text-align: center;
+.App {
+  text-align: center;
 }
 
-  .MuiResponsiveChart-container{
-    min-width: 400px !important; /* Tvinga igenom regeln */
-  }
+.MuiResponsiveChart-container {
+  min-width: 400px !important; /* Tvinga igenom regeln */
+}
 
-.Mui-focused, .MuiOutlinedInput-notchedOutline {
-border-color: #3a7161 !important;
+.Mui-focused,
+.MuiOutlinedInput-notchedOutline {
+  border-color: #3a7161 !important;
 }
 .MuiInputBase-input {
-    color: #182D27 !important;
+  color: #182d27 !important;
 }
-.MuiInputLabel-outlined{
-    color: #3a7161 !important;
+.MuiInputLabel-outlined {
+  color: #3a7161 !important;
 }
-.MuiPickersLayout-toolbar{
-    display: none !important;
+.MuiPickersLayout-toolbar {
+  display: none !important;
 }
-.workout-calendar .MuiButtonBase-root-MuiButton-root{
-    background-color: transparent;
-    display: none !important;
+.workout-calendar .MuiButtonBase-root-MuiButton-root {
+  background-color: transparent;
+  display: none !important;
 }
 /* ALLA DAGAR */
 /* .MuiButtonBase-root.MuiPickersDay-root{
@@ -28,12 +29,12 @@ border-color: #3a7161 !important;
 } */
 
 /* DEN MAN KLICKAR PÅ  */
-.MuiButtonBase-root.MuiPickersDay-root.Mui-selected{
-    background-color: transparent;
-    color: #182D27;
+.MuiButtonBase-root.MuiPickersDay-root.Mui-selected {
+  background-color: #fef4f6 !important;
+  color: #182d27;
 }
 /* den man klikcat på och hovrar */
-.MuiButtonBase-root.MuiPickersDay-root.Mui-selected:hover{
+/* .MuiButtonBase-root.MuiPickersDay-root.Mui-selected:hover{
     background-color: transparent;
     color: #182D27;
 }
@@ -42,102 +43,101 @@ border-color: #3a7161 !important;
     background-color: transparent;
     color: #182D27;
 
+} */
+*/ .workout-calendar .MuiPickersCalendarHeader-label {
+  font-size: 1.5rem;
+  color: #3a7161;
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
 }
 
-.workout-calendar .MuiPickersCalendarHeader-label{
-    font-size: 1.5rem;
-    color:#3a7161;
-    @media screen and (max-width: 768px){
-        font-size: 1rem;
-    }
-
+.workout-calendar .MuiPickersCalendarHeader-root {
+  font-size: 1.5rem;
+  color: #3a7161;
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+    width: 420px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 300px;
+  }
+}
+.workout-calendar .MuiPickersDay-root {
+  font-size: 1.3rem;
+  color: #182d27;
+  @media screen and (max-width: 480px) {
+    font-size: 1rem;
+  }
+}
+.workout-calendar .MuiDayCalendar-weekDayLabel {
+  width: 600px;
+  font-size: 1.5rem;
+  color: #70123a;
+  @media screen and (max-width: 768px) {
+    width: 400px;
+    font-size: 1rem;
+  }
+  @media screen and (max-width: 480px) {
+    width: 300px;
+  }
+}
+.workout-calendar .MuiDateCalendar-root {
+  width: 600px;
+  background-color: #fef4f6;
+  border-radius: 8px;
+  font-size: 56px;
+  @media screen and (max-width: 768px) {
+    width: 480px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 400px;
+  }
+}
+.workout-calendar .MuiDayCalendar-header {
+  width: 600px;
+  margin-bottom: '10px';
+  justify-content: space-between;
+  @media screen and (max-width: 768px) {
+    width: 480px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 340px;
+  }
+}
+.workout-calendar .MuiDayCalendar-weekContainer {
+  justify-content: space-between;
+  @media screen and (max-width: 768px) {
+    width: 460px;
+  }
+  @media screen and (max-width: 480px) {
+    width: 340px;
+  }
 }
 
-.workout-calendar .MuiPickersCalendarHeader-root{
-    font-size: 1.5rem;
-    color:#3a7161;
-    @media screen and (max-width: 768px){
-        font-size: 1rem;
-        width: 420px;
-    }
-    @media screen and (max-width: 480px){
-        width: 300px;
-    }
-
-}
-.workout-calendar .MuiPickersDay-root{
-    font-size: 1.3rem;
-    color: #182D27;
-    @media screen and (max-width: 480px){
-        font-size: 1rem;
-    }
-
-}
-.workout-calendar .MuiDayCalendar-weekDayLabel{
-    width: 600px;
-    font-size: 1.5rem;
-    color: #70123a;
-    @media screen and (max-width: 768px){
-        width: 400px;
-        font-size: 1rem;
-    }
-    @media screen and (max-width: 480px){
-        width: 300px;
-    }
-
-}
-.workout-calendar .MuiDateCalendar-root{
-    width: 600px;
-    background-color: #fef4f6;
-    border-radius: 8px;
-    font-size: 56px;
-    @media screen and (max-width: 768px){
-        width: 480px;
-    }
-    @media screen and (max-width: 480px){
-        width: 400px;
-    }
-    
-}
-.workout-calendar .MuiDayCalendar-header{
-    width: 600px;
-    margin-bottom: '10px';
-    justify-content: space-between;
-    @media screen and (max-width: 768px){
-        width: 480px;
-    }
-    @media screen and (max-width: 480px){
-        width: 340px;
-    }
-}
-.workout-calendar .MuiDayCalendar-weekContainer{
-    justify-content: space-between;
-    @media screen and (max-width: 768px){
-        width: 460px;
-    }
-    @media screen and (max-width: 480px){
-        width: 340px;
-    }
+.workout-calendar .MuiPickersSlideTransition-root {
+  margin-right: 10px;
+  margin-left: 10px;
+  @media screen and (max-width: 480px) {
+    width: 360px;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
 }
 
-.workout-calendar .MuiPickersSlideTransition-root{
-    margin-right: 10px;
-    margin-left: 10px;
-    @media screen and (max-width: 480px){
-        width: 360px;
-        margin-right: 0px;
-        margin-left: 0px;
-    }
+.workout-calendar .MuiPickersLayout-actionBar {
+  display: none !important;
 }
 
-.workout-calendar .MuiPickersLayout-actionBar{
-    display: none !important;
+.MuiBarElement-root {
+  background-color: #182d27 !important;
+  fill: #70123a !important;
 }
-
-.MuiBarElement-root{
-    background-color: #182D27 !important;
-    fill: #70123a !important;
+.MuiChartsAxis-tickLabel {
+  fill: #182d27 !important;
 }
-.MuiChartsAxis-tickLabel{
-    fill: #182D27 !important;
+.MuiTableCell-root {
+  @media (max-width: 480px) {
+    padding-right: 0 !important;
+  }
 }

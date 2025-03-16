@@ -1,10 +1,15 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Felicias träningsapp",
+  "name": "Felicias träningsapp",
   "icons": [
+    {
+      "src": "/images/dumbbell-35686.png",
+      "type": "image/png",
+      "sizes": "980x554"
+    }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#000",
+  "background_color": "#fff"
 }

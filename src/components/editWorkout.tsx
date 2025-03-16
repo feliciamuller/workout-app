@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography, Modal } from '@mui/material';
 import { LocalizationProvider, MobileDatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { svSE } from '@mui/x-date-pickers/locales';
 import { Workout } from '../models/Workout';
 import { useEffect, useState } from 'react';
@@ -19,15 +19,11 @@ export const EditWorkout = (props: EditWorkoutProps) => {
   const workoutRef = collection(db, 'workout');
 
   const { editModalOpen, setEditModalClosed, selected } = props;
-  // const [editWorkoutType, setEditWorkoutType] = useState<string | undefined>();
-  // const [editDuration, setEditDuration] = useState<number | undefined>();
-  // const [editDate, setEditDate] = useState<Timestamp | undefined>();
-  // const [currentWorkoutType, setCurrentWorkoutType] = useState<string>();
   const [valueDuration, setValueDuration] = useState<string>();
   const [valueDate, setValueDate] = useState<Timestamp>();
   const [valueWorkoutType, setValueWorkoutType] = useState<string>();
 
-  // denna körs när man klickar in sig på en ny workout = ny selected
+  // För att hämta informationen om den valda träningen
   useEffect(() => {
     setValueDate(selected.date);
     setValueDuration(selected.durationMinutes);
@@ -63,7 +59,14 @@ export const EditWorkout = (props: EditWorkoutProps) => {
     }
     setEditModalClosed();
   };
-
+  const handleDateChange = (newValue: Dayjs | null) => {
+    if (newValue) {
+      // Konverterar datumet till Timestamp
+      setValueDate(Timestamp.fromDate(newValue.toDate()));
+    } else {
+      setValueDate(selected.date);
+    }
+  };
   return (
     <Modal open={editModalOpen} onClose={setEditModalClosed}>
       <Box
@@ -108,9 +111,8 @@ export const EditWorkout = (props: EditWorkoutProps) => {
             sx={{ padding: 1 }}
             label='Datum'
             localeText={svSE.components.MuiLocalizationProvider.defaultProps.localeText}
-            onChange={(newValue) => setValueDate(newValue)}
-            // TODO: behöver kolla hur jag skriver ut det befintliga datumet
-            // value={valueDate}
+            onChange={(newValue) => handleDateChange(newValue)}
+            value={valueDate ? dayjs(valueDate.toDate()) : null} // Konvertera Firebase Timestamp till dayjs objekt
           />
         </LocalizationProvider>
         <Button
