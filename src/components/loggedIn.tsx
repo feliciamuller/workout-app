@@ -8,6 +8,8 @@ import Grid from '@mui/material/Grid2';
 import { Colors } from '../shared/colors';
 import { Calendar } from './calendar';
 import { setuid } from 'process';
+import { theme } from '../shared/theme';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 export const LoggedIn = () => {
   const [showWorkouts, setShowWorkouts] = useState<boolean>(false);
@@ -32,29 +34,54 @@ export const LoggedIn = () => {
     setShowAddWorkouts(true);
     setModalOpen(true);
   };
-  // denna sida kommer bli som menysida med olika dashboards och alterantiv
+
   return (
     <Box>
       {showWorkouts ? (
         <Grid container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Grid size={12} sx={{ gridAutoRows: '200px' }}>
-            <DisplayExercises />
-            <Button onClick={handleBackClick} sx={{ color: Colors.GREEN }}>
-              Gå tillbaka
+            <Button
+              onClick={handleBackClick}
+              sx={{
+                color: Colors.DARKBROWN,
+                padding: 1,
+                height: { xs: '40px', sm: '40px', md: '40px', lg: '40px' },
+                width: { xs: '40px', sm: '80px', md: '80px', lg: '80px' },
+                display: 'flex',
+                position: 'absolute',
+                right: '58px',
+                zIndex: 100,
+                '@media (max-width: 900px)': {
+                  right: '8px',
+                },
+              }}
+            >
+              <KeyboardBackspaceIcon />
             </Button>
+            <DisplayExercises />
           </Grid>
         </Grid>
       ) : (
         <Box>
-          <Grid container spacing={1} sx={{ mb: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Grid
+            container
+            spacing={1}
+            sx={{
+              mb: 1,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              paddingTop: '50px',
+            }}
+          >
             <Grid size={6} sx={{ maxWidth: 400 }}>
               <Button
                 onClick={handleWorkoutClick}
                 sx={{
-                  backgroundColor: Colors.DARKPINK,
-                  color: Colors.LIGHTPINK,
+                  backgroundColor: Colors.LIGHTYELLOW,
+                  color: Colors.BROWN,
                   height: '100px',
-                  ':hover': { backgroundColor: Colors.GREEN, color: Colors.WHITE },
+                  ':hover': { backgroundColor: Colors.BROWN, color: Colors.LIGHTYELLOW },
                 }}
               >
                 Visa träningsstatistik
@@ -64,10 +91,10 @@ export const LoggedIn = () => {
               <Button
                 onClick={handleAddWorkoutClick}
                 sx={{
-                  backgroundColor: Colors.LIGHTPINK,
-                  color: Colors.DARKPINK,
+                  backgroundColor: Colors.BROWN,
+                  color: Colors.LIGHTYELLOW,
                   height: '100px',
-                  ':hover': { backgroundColor: Colors.GREEN, color: Colors.LIGHTPINK },
+                  ':hover': { backgroundColor: Colors.LIGHTYELLOW, color: Colors.BROWN },
                 }}
               >
                 Ny träning

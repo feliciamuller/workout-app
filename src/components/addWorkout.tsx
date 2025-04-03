@@ -24,13 +24,16 @@ export const AddWorkout = (props: AddWorkoutProps) => {
 
   const submitWorkout = async (userId: string | undefined) => {
     if (userId === undefined) {
-      userId = 'tom';
+      userId = '';
     }
-    const workoutRef = collection(db, 'users', userId, 'workouts'); //kopplar till användarens uid
+
+    const workoutRef = collection(db, 'users', userId, 'workouts');
+
     try {
       await addDoc(workoutRef, { workoutType: newWorkout, durationMinutes: newDuration, date: newDate?.toDate() });
     } catch (error) {
       console.error(error);
+      setModalClosed();
     }
     setModalClosed();
   };
@@ -69,11 +72,7 @@ export const AddWorkout = (props: AddWorkoutProps) => {
             localeText={svSE.components.MuiLocalizationProvider.defaultProps.localeText}
           />
         </LocalizationProvider>
-        <Button
-          sx={{ display: 'flex', justifySelf: 'center', padding: 1, color: Colors.DARKPINK }}
-          type='submit'
-          onClick={() => submitWorkout(auth.currentUser?.uid)}
-        >
+        <Button sx={{ display: 'flex', justifySelf: 'center', padding: 1 }} type='submit' onClick={() => submitWorkout(auth.currentUser?.uid)}>
           Spara
         </Button>
       </Box>

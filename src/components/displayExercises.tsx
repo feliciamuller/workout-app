@@ -45,7 +45,7 @@ export const DisplayExercises = () => {
     // Referens till databasen och collection
     const workoutRef = collection(db, 'users', userId, 'workouts');
 
-    // Lyssnar på ändringar i databasen
+    // listening on changes in the database
     const unsubscribe = onSnapshot(workoutRef, (snapshot) => {
       try {
         const updatedData = snapshot.docs.map((doc) => ({
@@ -58,7 +58,7 @@ export const DisplayExercises = () => {
       }
     });
     return () => {
-      // Stäng av lyssnare
+      // unregister listener to clean up
       unsubscribe();
     };
   }, [userId]);
@@ -124,11 +124,11 @@ export const DisplayExercises = () => {
     },
   ];
 
-  // funktion för att filtrera ut det man väljer i dropdown menyn
-  const handleSelect = (selected: string) => {
+  // to filter workout
+  const handleFilteredWorkout = (selected: string) => {
     console.log('selected', selected);
     if (selected) {
-      if (selected === 'Alla') {
+      if (selected === 'alla') {
         setFilteredWorkout('');
       } else {
         setFilteredWorkout(selected);
@@ -139,8 +139,7 @@ export const DisplayExercises = () => {
   };
 
   const workoutOptions = workoutList.filter((value, index, self) => self.findIndex((t) => t.workoutType === value.workoutType) === index);
-  console.log(workoutOptions);
-  // TODO: TA BORT TEXTEN PÅ SELECT DROPDOWN, VILL BARA HA PIL
+
   return (
     <Box>
       <Grid container sx={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -159,15 +158,29 @@ export const DisplayExercises = () => {
           />
         </Grid>
         <Grid size={12} sx={{ width: { lg: '60%', md: '100%', sm: '100%', xs: '100%' } }}>
-          <TableContainer sx={{ backgroundColor: Colors.WHITE, borderRadius: '10px' }}>
+          <TableContainer sx={{ backgroundColor: Colors.BEIGEWHITE, borderRadius: '10px' }}>
             <Table sx={{ color: 'grey' }}>
               <TableHead>
                 <TableRow>
-                  <TableCell>
+                  <TableCell
+                    sx={{
+                      '@media (max-width: 400px)': {
+                        paddingTop: '21px', // Sätt ml till 0px på små skärmar
+                      },
+                    }}
+                  >
                     Träning
                     <Select
-                      sx={{ width: '80px', height: '20px', fontSize: '12px', ml: '5px' }}
-                      onChange={(event: SelectChangeEvent) => handleSelect(event.target.value)}
+                      sx={{
+                        width: '80px',
+                        height: '20px',
+                        fontSize: '12px',
+                        ml: '5px',
+                        '@media (max-width: 400px)': {
+                          ml: '0px',
+                        },
+                      }}
+                      onChange={(event: SelectChangeEvent) => handleFilteredWorkout(event.target.value)}
                       value={filteredWorkout}
                     >
                       {workoutOptions?.map((item) => (
@@ -180,8 +193,26 @@ export const DisplayExercises = () => {
                       </MenuItem>
                     </Select>
                   </TableCell>
-                  <TableCell align='left'>Längd</TableCell>
-                  <TableCell align='left'>Datum</TableCell>
+                  <TableCell
+                    align='left'
+                    sx={{
+                      '@media (max-width: 400px)': {
+                        paddingTop: '0',
+                      },
+                    }}
+                  >
+                    Längd
+                  </TableCell>
+                  <TableCell
+                    align='left'
+                    sx={{
+                      '@media (max-width: 400px)': {
+                        paddingTop: '0', // Sätt ml till 0px på små skärmar
+                      },
+                    }}
+                  >
+                    Datum
+                  </TableCell>
                   <TableCell align='left'></TableCell>
                 </TableRow>
               </TableHead>
@@ -193,7 +224,7 @@ export const DisplayExercises = () => {
                         <TableCell align='left'>{item.durationMinutes}</TableCell>
                         <TableCell align='left'>{item.date?.toDate().toLocaleDateString()}</TableCell>
                         <TableCell>
-                          <Button onClick={() => handleEditClick(item)} sx={{ color: Colors.GREEN }}>
+                          <Button onClick={() => handleEditClick(item)} sx={{ color: Colors.BROWN }}>
                             <TuneOutlinedIcon />
                           </Button>
                         </TableCell>
@@ -206,7 +237,7 @@ export const DisplayExercises = () => {
                         <TableCell align='left'>{item.durationMinutes}</TableCell>
                         <TableCell align='left'>{item.date?.toDate().toLocaleDateString()}</TableCell>
                         <TableCell>
-                          <Button onClick={() => handleEditClick(item)} sx={{ color: Colors.GREEN }}>
+                          <Button onClick={() => handleEditClick(item)} sx={{ color: Colors.BROWN }}>
                             <TuneOutlinedIcon />
                           </Button>
                         </TableCell>

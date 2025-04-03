@@ -23,7 +23,7 @@ export const EditWorkout = (props: EditWorkoutProps) => {
   const [valueDate, setValueDate] = useState<Timestamp>();
   const [valueWorkoutType, setValueWorkoutType] = useState<string>();
 
-  // För att hämta informationen om den valda träningen
+  // data from the selected workout
   useEffect(() => {
     setValueDate(selected.date);
     setValueDuration(selected.durationMinutes);
@@ -61,7 +61,6 @@ export const EditWorkout = (props: EditWorkoutProps) => {
   };
   const handleDateChange = (newValue: Dayjs | null) => {
     if (newValue) {
-      // Konverterar datumet till Timestamp
       setValueDate(Timestamp.fromDate(newValue.toDate()));
     } else {
       setValueDate(selected.date);
@@ -76,7 +75,7 @@ export const EditWorkout = (props: EditWorkoutProps) => {
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: 400,
-          bgcolor: 'white',
+          bgcolor: '#fffdfe',
           textAlign: 'center',
           padding: 1,
           borderRadius: '8px',
@@ -117,12 +116,12 @@ export const EditWorkout = (props: EditWorkoutProps) => {
         </LocalizationProvider>
         <Button
           onClick={() => handleEditClick(selected, auth.currentUser?.uid)}
-          sx={{ display: 'flex', justifySelf: 'center', padding: 1, color: Colors.DARKPINK }}
+          sx={{ display: 'flex', justifySelf: 'center', padding: 1, color: Colors.DARKBROWN }}
           type='submit'
         >
           Spara
         </Button>
-        <Button type='submit' sx={{ color: Colors.DARKPINK }} onClick={() => handleDeleteClick(selected, auth.currentUser?.uid)}>
+        <Button type='submit' sx={{ color: Colors.DARKBROWN }} onClick={() => handleDeleteClick(selected, auth.currentUser?.uid)}>
           Radera aktivitet
         </Button>
       </Box>

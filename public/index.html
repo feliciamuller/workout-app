@@ -20,10 +20,10 @@
       // kollar om service worker funkar
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          //register returnerar ett promise
+          //registrerar en service worker fil
           navigator.serviceWorker
             .register('/serviceworker.js')
-            .then((reg) => console.log('success', reg.scope)) // tillåter oss att skapa egen service worker fil
+            .then((reg) => console.log('success', reg.scope))
             .catch((error) => console.error('error', error));
         });
       }

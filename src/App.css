@@ -1,52 +1,45 @@
 .App {
   text-align: center;
+  padding-right: 50px;
+  padding-left: 50px;
+
+  @media screen and (max-width: 900px) {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 .MuiResponsiveChart-container {
-  min-width: 400px !important; /* Tvinga igenom regeln */
+  min-width: 400px !important;
 }
 
 .Mui-focused,
 .MuiOutlinedInput-notchedOutline {
-  border-color: #3a7161 !important;
+  border-color: #351710 !important;
 }
 .MuiInputBase-input {
-  color: #182d27 !important;
+  color: #351710 !important;
+  margin-left: 0;
 }
 .MuiInputLabel-outlined {
-  color: #3a7161 !important;
+  color: #351710 !important;
 }
 .MuiPickersLayout-toolbar {
   display: none !important;
 }
 .workout-calendar .MuiButtonBase-root-MuiButton-root {
-  background-color: transparent;
+  background-color: #fffae6;
   display: none !important;
 }
-/* ALLA DAGAR */
-/* .MuiButtonBase-root.MuiPickersDay-root{
 
-} */
-
-/* DEN MAN KLICKAR PÅ  */
 .MuiButtonBase-root.MuiPickersDay-root.Mui-selected {
-  background-color: #fef4f6 !important;
-  color: #182d27;
+  background-color: #fffae6 !important;
+  color: #351710;
 }
-/* den man klikcat på och hovrar */
-/* .MuiButtonBase-root.MuiPickersDay-root.Mui-selected:hover{
-    background-color: transparent;
-    color: #182D27;
-}
-.MuiButtonBase-root.MuiPickersDay-root.Mui-selected:focus{
-    background-color: #70123a;
-    background-color: transparent;
-    color: #182D27;
 
-} */
-*/ .workout-calendar .MuiPickersCalendarHeader-label {
+.workout-calendar .MuiPickersCalendarHeader-label {
   font-size: 1.5rem;
-  color: #3a7161;
+  color: #351710;
   @media screen and (max-width: 768px) {
     font-size: 1rem;
   }
@@ -54,7 +47,7 @@
 
 .workout-calendar .MuiPickersCalendarHeader-root {
   font-size: 1.5rem;
-  color: #3a7161;
+  color: #351710;
   @media screen and (max-width: 768px) {
     font-size: 1rem;
     width: 420px;
@@ -65,7 +58,7 @@
 }
 .workout-calendar .MuiPickersDay-root {
   font-size: 1.3rem;
-  color: #182d27;
+  color: #351710;
   @media screen and (max-width: 480px) {
     font-size: 1rem;
   }
@@ -73,7 +66,7 @@
 .workout-calendar .MuiDayCalendar-weekDayLabel {
   width: 600px;
   font-size: 1.5rem;
-  color: #70123a;
+  color: #351710;
   @media screen and (max-width: 768px) {
     width: 400px;
     font-size: 1rem;
@@ -84,7 +77,7 @@
 }
 .workout-calendar .MuiDateCalendar-root {
   width: 600px;
-  background-color: #fef4f6;
+  background-color: #fffae6;
   border-radius: 8px;
   font-size: 56px;
   @media screen and (max-width: 768px) {
@@ -107,6 +100,8 @@
 }
 .workout-calendar .MuiDayCalendar-weekContainer {
   justify-content: space-between;
+  margin-right: 10px;
+  margin-left: 10px;
   @media screen and (max-width: 768px) {
     width: 460px;
   }
@@ -130,11 +125,11 @@
 }
 
 .MuiBarElement-root {
-  background-color: #182d27 !important;
-  fill: #70123a !important;
+  background-color: #351710 !important;
+  fill: #351710 !important;
 }
 .MuiChartsAxis-tickLabel {
-  fill: #182d27 !important;
+  fill: #5c453e !important;
 }
 .MuiTableCell-root {
   @media (max-width: 480px) {

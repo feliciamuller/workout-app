@@ -12,10 +12,11 @@ const firebaseConfig = {
   measurementId: 'G-P3EYDQ00JN',
 };
 
-// Initialize Firebase
+// initialize Firebase
 const app = initializeApp(firebaseConfig);
-// inloggning och autentisering
+// authentication
 export const auth = getAuth(app);
+// google authentication
 export const googleProvider = new GoogleAuthProvider();
-// databasen
+// database
 export const db = getFirestore(app);

@@ -34,11 +34,10 @@ export const Calendar = () => {
     };
   }, [auth.currentUser]);
 
-  // Anpassad funktion för att markera en träningsdag med Badge
-  const renderCustomDay = (props: PickersDayProps<Dayjs>) => {
+  // checking if the day has a workout
+  const renderWorkoutDay = (props: PickersDayProps<Dayjs>) => {
     const { day, outsideCurrentMonth, ...other } = props;
 
-    // Kolla om det finns en matchande träningsdag
     const isWorkoutDay = workoutList.some((workout) => {
       const workoutDate = workout.date instanceof Timestamp ? workout.date.toDate() : workout.date;
       return workoutDate ? dayjs(workoutDate).isSame(day, 'day') : false;
@@ -59,6 +58,7 @@ export const Calendar = () => {
       </Badge>
     );
   };
+
   return (
     <Grid container>
       <Grid size={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -69,7 +69,7 @@ export const Calendar = () => {
             orientation='portrait'
             openTo='day'
             slots={{
-              day: renderCustomDay, // Använd renderCustomDay för att anpassa dagen
+              day: renderWorkoutDay,
             }}
           />
         </LocalizationProvider>
