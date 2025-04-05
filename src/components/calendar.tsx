@@ -8,12 +8,10 @@ import { auth, db } from '../config/firebase';
 import { collection, onSnapshot, Timestamp } from 'firebase/firestore';
 import dayjs, { Dayjs } from 'dayjs';
 import Grid from '@mui/material/Grid2';
-import { Colors } from '../shared/colors';
 
 export const Calendar = () => {
   const [workoutList, setWorkoutList] = useState<Workout[]>([]);
-  const [value, setValue] = useState(dayjs());
-  // BLIR KNASIGT I FIREBASE PERMISSIONS
+
   useEffect(() => {
     const userId = auth.currentUser?.uid;
     if (!userId) return;
