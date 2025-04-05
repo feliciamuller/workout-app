@@ -1,0 +1,15 @@
+{
+  "short_name": "Workouts",
+  "name": "Workouts",
+  "icons": [
+    {
+      "src": "/images/dumbbell.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000",
+  "background_color": "#f6e7a4"
+}
