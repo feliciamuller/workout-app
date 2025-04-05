@@ -23,17 +23,20 @@ export const AddWorkout = (props: AddWorkoutProps) => {
   const { modalOpen, setModalClosed } = props;
 
   const submitWorkout = async (userId: string | undefined) => {
-    if (userId === undefined) {
+    if (!userId) {
       userId = '';
     }
 
     const workoutRef = collection(db, 'users', userId, 'workouts');
 
     try {
-      await addDoc(workoutRef, { workoutType: newWorkout, durationMinutes: newDuration, date: newDate?.toDate() });
+      addDoc(workoutRef, {
+        workoutType: newWorkout,
+        durationMinutes: newDuration,
+        date: newDate?.toDate(),
+      });
     } catch (error) {
-      console.error(error);
-      setModalClosed();
+      console.error('Error adding workout:', error);
     }
     setModalClosed();
   };

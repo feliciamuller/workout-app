@@ -165,7 +165,7 @@ export const DisplayExercises = () => {
                   <TableCell
                     sx={{
                       '@media (max-width: 400px)': {
-                        paddingTop: '21px', // Sätt ml till 0px på små skärmar
+                        paddingTop: '21px',
                       },
                     }}
                   >

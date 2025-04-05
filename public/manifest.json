@@ -1,15 +1,15 @@
 {
-  "short_name": "Felicias träningsapp",
-  "name": "Felicias träningsapp",
+  "short_name": "Workouts",
+  "name": "Workouts",
   "icons": [
     {
-      "src": "/images/dumbbell-35686.png",
+      "src": "/images/dumbbell.png",
       "type": "image/png",
-      "sizes": "1024x1024"
+      "sizes": "512x512"
     }
   ],
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#000",
-  "background_color": "#fff"
+  "background_color": "#f6e7a4"
 }

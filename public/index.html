@@ -17,10 +17,9 @@
   <body>
     <div id="root"></div>
     <script>
-      // kollar om service worker funkar
+      // register service worker
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          //registrerar en service worker fil
           navigator.serviceWorker
             .register('/serviceworker.js')
             .then((reg) => console.log('success', reg.scope))

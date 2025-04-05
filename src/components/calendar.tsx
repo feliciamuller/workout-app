@@ -54,7 +54,14 @@ export const Calendar = () => {
           },
         }}
       >
-        <PickersDay {...other} day={day} outsideCurrentMonth={outsideCurrentMonth} />
+        <PickersDay
+          {...other}
+          day={day}
+          outsideCurrentMonth={outsideCurrentMonth}
+          sx={{
+            marginTop: '13px',
+          }}
+        />
       </Badge>
     );
   };
