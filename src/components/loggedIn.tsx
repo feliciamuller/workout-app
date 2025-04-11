@@ -14,7 +14,6 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 export const LoggedIn = () => {
   const [showWorkouts, setShowWorkouts] = useState<boolean>(false);
   const [showAddWorkouts, setShowAddWorkouts] = useState<boolean>(false);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const handleWorkoutClick = () => {

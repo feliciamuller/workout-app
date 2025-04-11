@@ -9,10 +9,6 @@
   }
 }
 
-.MuiResponsiveChart-container {
-  min-width: 400px !important;
-}
-
 .Mui-focused,
 .MuiOutlinedInput-notchedOutline {
   border-color: #351710 !important;

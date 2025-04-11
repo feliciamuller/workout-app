@@ -27,22 +27,18 @@ export const DisplayExercises = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
   const [selectedWorkout, setSelectedWorkout] = useState<Workout>();
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [userId, setUserId] = useState<string | undefined>(auth.currentUser?.uid);
   const [filteredWorkoutList, setFilteredWorkoutList] = useState<Workout[]>([]);
   const [filteredWorkout, setFilteredWorkout] = useState<string>('');
-  // rules i databasen är att användare som skapat får ändra och läsa
-  // SKULLE BEHÖVA KOLLA PÅ PRESTANDAN
-  // är snapshot bäst eller vanligt promise
 
   useEffect(() => {
-    // Nuvarande användaren
+    // curent user
     const userId = auth.currentUser?.uid;
-    // Om det inte finns någon userID
+    // if there is no user
     if (!userId) {
       return;
     }
-    // Referens till databasen och collection
+    // refernce to database
     const workoutRef = collection(db, 'users', userId, 'workouts');
 
     // listening on changes in the database
@@ -207,7 +203,7 @@ export const DisplayExercises = () => {
                     align='left'
                     sx={{
                       '@media (max-width: 400px)': {
-                        paddingTop: '0', // Sätt ml till 0px på små skärmar
+                        paddingTop: '0',
                       },
                     }}
                   >

@@ -1,12 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
-import { auth, googleProvider } from '../config/firebase'; // auth håller information om vem som är inloggad
+import { auth, googleProvider } from '../config/firebase';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import Grid from '@mui/material/Grid2';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { LoggedIn } from './loggedIn';
 import { Colors } from '../shared/colors';
-
-// TODO: kolla hur man får auth att hålla användaren inloggad vid rendering
 
 export const Auth = () => {
   const [email, setEmail] = useState<string>('');
@@ -43,7 +41,7 @@ export const Auth = () => {
       console.error(error);
     }
   };
-  // TODO BUGG: HAR MAN SKAPAT NY ANVÄNDARE OCH DEN FINNS REDAN SÅ KAN MAN INTE LOGGA IN MED NÅGON ANNAN ANVÄNDARE ÄN DEN MAN FÖRSÖKTE SKAPA ANVÄNDARE MED
+
   const signInUser = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
@@ -56,7 +54,6 @@ export const Auth = () => {
     }
   };
 
-  // FUNGERAR INTE, CORS BLOCKERAR POPUPFÖNSTER
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
